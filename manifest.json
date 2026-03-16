@@ -4,8 +4,8 @@
   "start_url": "/miles-brief/",
   "scope": "/miles-brief/",
   "display": "standalone",
-  "background_color": "#36343a",
-  "theme_color": "#36343a",
+  "background_color": "#ddd4c5",
+  "theme_color": "#ddd4c5",
   "icons": [
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
