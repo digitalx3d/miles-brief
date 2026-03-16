@@ -17,9 +17,7 @@
     --text-primary: #645d54;
     --text-secondary: #69655d;
     --accent-weather: #fee381;
-    --accent-weather-text: #9a8520;
     --accent-email: #3dfff2;
-    --accent-email-text: #1a8a80;
     --accent-calendar: #4476ab;
     --accent-note: #a05a6a;
     --border-subtle: rgba(0,0,0,0.08);
@@ -51,16 +49,6 @@
     padding: 36px 0 6px;
     animation: fadeDown 0.6s ease-out both;
   }
-  .header .label {
-    font-family: var(--font-body);
-    font-size: 0.8em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-secondary);
-    opacity: 0.6;
-    margin-bottom: 6px;
-  }
   .header h1 {
     font-family: var(--font-display);
     font-size: 2.2em;
@@ -70,7 +58,7 @@
     line-height: 1.15;
   }
   .header .date {
-    font-size: 1.05em;
+    font-size: 1.3em;
     color: var(--text-secondary);
     opacity: 0.7;
     margin-top: 8px;
@@ -120,10 +108,12 @@
   .card.weather  { animation: fadeUp 0.5s ease-out 0.15s both; }
   .card.email    { animation: fadeUp 0.5s ease-out 0.25s both; }
   .card.calendar { animation: fadeUp 0.5s ease-out 0.35s both; }
+  .card.note     { animation: fadeUp 0.5s ease-out 0.45s both; }
 
   .card.weather::before  { background: linear-gradient(90deg, var(--accent-weather), transparent); }
   .card.email::before    { background: linear-gradient(90deg, var(--accent-email), transparent); }
   .card.calendar::before { background: linear-gradient(90deg, var(--accent-calendar), transparent); }
+  .card.note::before     { background: linear-gradient(90deg, var(--accent-note), transparent); }
 
   .card-header {
     display: flex;
@@ -144,6 +134,7 @@
   .card.weather .card-icon  { background: rgba(254,227,129,0.3); }
   .card.email .card-icon    { background: rgba(61,255,242,0.2); }
   .card.calendar .card-icon { background: rgba(68,118,171,0.2); }
+  .card.note .card-icon     { background: rgba(160,90,106,0.2); }
 
   .card h2 {
     font-family: var(--font-display);
@@ -151,9 +142,10 @@
     font-weight: 400;
     letter-spacing: 0.3px;
   }
-  .card.weather h2  { color: var(--accent-weather-text); }
-  .card.email h2    { color: var(--accent-email-text); }
+  .card.weather h2  { color: var(--accent-weather); }
+  .card.email h2    { color: var(--accent-email); }
   .card.calendar h2 { color: var(--accent-calendar); }
+  .card.note h2     { color: var(--accent-note); }
 
   .card p, .card li {
     font-size: 1.38em;
@@ -191,13 +183,13 @@
     animation: fadeUp 0.5s ease-out 0.55s both;
   }
   .footer img {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
   }
   .footer span {
-    font-size: 0.82em;
+    font-size: 1em;
     color: var(--text-secondary);
     opacity: 0.4;
     letter-spacing: 2px;
@@ -224,7 +216,6 @@
 <body>
   <div class="container">
     <div class="header">
-      <div class="label">Miles Monroe</div>
       <h1>Morning Brief</h1>
       <div class="date">Monday, March 16, 2026</div>
       <div class="divider"></div>
@@ -262,6 +253,14 @@
           <li><strong>2:30 PM</strong> -- Campbell orthodontist pickup</li>
           <li><strong>7:15 PM</strong> -- Hockey at Ice Den</li>
         </ul>
+      </div>
+
+      <div class="card note">
+        <div class="card-header">
+          <div class="card-icon">&#127917;</div>
+          <h2>Miles' Take</h2>
+        </div>
+        <p>I told my therapist I was worried about the twins growing up too fast. She said that's normal. I said no, they've discovered AI tools and now they're automating their chores. I'm being disrupted by twelve-year-olds. She raised her rate.</p>
       </div>
     </div>
 
