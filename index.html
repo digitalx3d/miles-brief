@@ -4,27 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#36343a">
+<meta name="theme-color" content="#ddd4c5">
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <title>Morning Brief</title>
 <style>
   :root {
-    --bg: #36343a;
-    --bg-card: #413f47;
-    --bg-card-hover: #4a474f;
-    --text-primary: #e8e4df;
-    --text-secondary: #b5b0a8;
-    --text-muted: #8a857d;
-    --accent-weather: #e8b44c;
-    --accent-email: #6dba97;
-    --accent-calendar: #8b9dd9;
-    --accent-note: #d4687a;
-    --border-subtle: rgba(255,255,255,0.06);
-    --shadow-card: 0 2px 12px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15);
-    --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --bg: #ddd4c5;
+    --bg-card: #beaf9d;
+    --text-primary: #645d54;
+    --text-secondary: #69655d;
+    --accent-weather: #fee381;
+    --accent-weather-text: #9a8520;
+    --accent-email: #3dfff2;
+    --accent-email-text: #1a8a80;
+    --accent-calendar: #4476ab;
+    --accent-note: #a05a6a;
+    --border-subtle: rgba(0,0,0,0.08);
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+    --font-display: 'Libre Baskerville', Georgia, serif;
     --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -33,9 +33,6 @@
   body {
     font-family: var(--font-body);
     background: var(--bg);
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,180,76,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139,157,217,0.04) 0%, transparent 50%);
     color: var(--text-primary);
     min-height: 100vh;
     min-height: 100dvh;
@@ -49,7 +46,6 @@
     margin: 0 auto;
   }
 
-  /* --- Header --- */
   .header {
     text-align: center;
     padding: 36px 0 6px;
@@ -61,7 +57,8 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    opacity: 0.6;
     margin-bottom: 6px;
   }
   .header h1 {
@@ -74,31 +71,29 @@
   }
   .header .date {
     font-size: 1.05em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    opacity: 0.7;
     margin-top: 8px;
-    font-weight: 400;
   }
   .header .divider {
     width: 48px;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent-weather), var(--accent-note));
+    background: linear-gradient(90deg, var(--accent-weather), var(--accent-calendar));
     margin: 18px auto 0;
     border-radius: 1px;
     opacity: 0.7;
   }
 
-  /* --- Greeting --- */
   .greeting {
     text-align: center;
-    font-size: 1.18em;
-    line-height: 1.7;
+    font-size: 1.34em;
+    line-height: 1.3;
     color: var(--text-secondary);
     padding: 22px 8px 28px;
     font-style: italic;
     animation: fadeDown 0.6s ease-out 0.1s both;
   }
 
-  /* --- Cards --- */
   .cards {
     display: flex;
     flex-direction: column;
@@ -108,10 +103,8 @@
   .card {
     background: var(--bg-card);
     border-radius: 14px;
-    padding: 22px 24px;
-    border-top: 3px solid var(--border-subtle);
+    padding: 16px 18px;
     box-shadow: var(--shadow-card);
-    transition: background 0.2s ease;
     position: relative;
     overflow: hidden;
   }
@@ -121,18 +114,16 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 5px;
     border-radius: 14px 14px 0 0;
   }
   .card.weather  { animation: fadeUp 0.5s ease-out 0.15s both; }
   .card.email    { animation: fadeUp 0.5s ease-out 0.25s both; }
   .card.calendar { animation: fadeUp 0.5s ease-out 0.35s both; }
-  .card.note     { animation: fadeUp 0.5s ease-out 0.45s both; }
 
-  .card.weather::before  { background: linear-gradient(90deg, var(--accent-weather), rgba(232,180,76,0.3)); }
-  .card.email::before    { background: linear-gradient(90deg, var(--accent-email), rgba(109,186,151,0.3)); }
-  .card.calendar::before { background: linear-gradient(90deg, var(--accent-calendar), rgba(139,157,217,0.3)); }
-  .card.note::before     { background: linear-gradient(90deg, var(--accent-note), rgba(212,104,122,0.3)); }
+  .card.weather::before  { background: linear-gradient(90deg, var(--accent-weather), transparent); }
+  .card.email::before    { background: linear-gradient(90deg, var(--accent-email), transparent); }
+  .card.calendar::before { background: linear-gradient(90deg, var(--accent-calendar), transparent); }
 
   .card-header {
     display: flex;
@@ -142,43 +133,38 @@
   }
   .card-icon {
     font-size: 1.2em;
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
     flex-shrink: 0;
   }
-  .card.weather .card-icon  { background: rgba(232,180,76,0.15); }
-  .card.email .card-icon    { background: rgba(109,186,151,0.15); }
-  .card.calendar .card-icon { background: rgba(139,157,217,0.15); }
-  .card.note .card-icon     { background: rgba(212,104,122,0.15); }
+  .card.weather .card-icon  { background: rgba(254,227,129,0.3); }
+  .card.email .card-icon    { background: rgba(61,255,242,0.2); }
+  .card.calendar .card-icon { background: rgba(68,118,171,0.2); }
 
   .card h2 {
     font-family: var(--font-display);
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: 400;
     letter-spacing: 0.3px;
   }
-  .card.weather h2  { color: var(--accent-weather); }
-  .card.email h2    { color: var(--accent-email); }
+  .card.weather h2  { color: var(--accent-weather-text); }
+  .card.email h2    { color: var(--accent-email-text); }
   .card.calendar h2 { color: var(--accent-calendar); }
-  .card.note h2     { color: var(--accent-note); }
 
   .card p, .card li {
-    font-size: 1.12em;
-    line-height: 1.65;
+    font-size: 1.38em;
+    line-height: 1.3;
     color: var(--text-secondary);
   }
   .card p strong, .card li strong {
     color: var(--text-primary);
     font-weight: 600;
   }
-  .card ul {
-    list-style: none;
-    padding: 0;
-  }
+  .card ul { list-style: none; }
   .card ul li {
     padding: 8px 0;
     border-bottom: 1px solid var(--border-subtle);
@@ -186,29 +172,39 @@
   .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
   .card ul li:first-child { padding-top: 0; }
 
-  /* --- Sign-off --- */
   .signoff {
     text-align: center;
-    font-size: 1.08em;
-    line-height: 1.6;
-    color: var(--text-muted);
+    font-size: 1.35em;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    opacity: 0.7;
     padding: 28px 12px 16px;
     animation: fadeUp 0.5s ease-out 0.5s both;
   }
 
-  /* --- Footer --- */
   .footer {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     padding: 8px 0 32px;
+    animation: fadeUp 0.5s ease-out 0.55s both;
+  }
+  .footer img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .footer span {
     font-size: 0.82em;
-    color: rgba(138,133,125,0.5);
+    color: var(--text-secondary);
+    opacity: 0.4;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
-    animation: fadeUp 0.5s ease-out 0.55s both;
   }
 
-  /* --- Animations --- */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -217,8 +213,6 @@
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* Reduce motion for those who prefer it */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -272,7 +266,10 @@
     </div>
 
     <div class="signoff">Three things on the calendar, two emails that matter, and zero reasons to check your inbox again before 10. That's what I call a Monday with potential.</div>
-    <div class="footer">Miles Monroe</div>
+    <div class="footer">
+      <img src="miles_profile.png" alt="">
+      <span>Miles Monroe</span>
+    </div>
   </div>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');</script>
 </body>
