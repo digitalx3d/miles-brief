@@ -4,144 +4,276 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#e94560">
+<meta name="theme-color" content="#36343a">
 <link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <title>Morning Brief</title>
 <style>
+  :root {
+    --bg: #36343a;
+    --bg-card: #413f47;
+    --bg-card-hover: #4a474f;
+    --text-primary: #e8e4df;
+    --text-secondary: #b5b0a8;
+    --text-muted: #8a857d;
+    --accent-weather: #e8b44c;
+    --accent-email: #6dba97;
+    --accent-calendar: #8b9dd9;
+    --accent-note: #d4687a;
+    --border-subtle: rgba(255,255,255,0.06);
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15);
+    --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: #2b2b3a;
-    color: #eee;
+    font-family: var(--font-body);
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,180,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139,157,217,0.04) 0%, transparent 50%);
+    color: var(--text-primary);
     min-height: 100vh;
     min-height: 100dvh;
-    padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+    padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  .container {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* --- Header --- */
   .header {
     text-align: center;
-    padding: 28px 0 8px;
+    padding: 36px 0 6px;
+    animation: fadeDown 0.6s ease-out both;
+  }
+  .header .label {
+    font-family: var(--font-body);
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
   }
   .header h1 {
-    font-size: 1.8em;
-    color: #e94560;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-family: var(--font-display);
+    font-size: 2.2em;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+    line-height: 1.15;
   }
   .header .date {
-    font-size: 1em;
-    color: #888;
-    margin-top: 4px;
+    font-size: 1.05em;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 400;
+  }
+  .header .divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-weather), var(--accent-note));
+    margin: 18px auto 0;
+    border-radius: 1px;
+    opacity: 0.7;
   }
 
+  /* --- Greeting --- */
   .greeting {
-    max-width: 600px;
-    margin: 20px auto 16px;
-    font-size: 1.15em;
-    line-height: 1.65;
-    color: #ccc;
     text-align: center;
+    font-size: 1.18em;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding: 22px 8px 28px;
+    font-style: italic;
+    animation: fadeDown 0.6s ease-out 0.1s both;
   }
 
+  /* --- Cards --- */
   .cards {
-    max-width: 600px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
   }
 
   .card {
-    background: #383850;
-    border-radius: 12px;
-    padding: 18px 20px;
-    border-left: 4px solid #555;
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 22px 24px;
+    border-top: 3px solid var(--border-subtle);
+    box-shadow: var(--shadow-card);
+    transition: background 0.2s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .card.weather  { border-left-color: #f0a500; }
-  .card.email    { border-left-color: #4ecca3; }
-  .card.calendar { border-left-color: #7b68ee; }
-  .card.note     { border-left-color: #e94560; }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+  .card.weather  { animation: fadeUp 0.5s ease-out 0.15s both; }
+  .card.email    { animation: fadeUp 0.5s ease-out 0.25s both; }
+  .card.calendar { animation: fadeUp 0.5s ease-out 0.35s both; }
+  .card.note     { animation: fadeUp 0.5s ease-out 0.45s both; }
+
+  .card.weather::before  { background: linear-gradient(90deg, var(--accent-weather), rgba(232,180,76,0.3)); }
+  .card.email::before    { background: linear-gradient(90deg, var(--accent-email), rgba(109,186,151,0.3)); }
+  .card.calendar::before { background: linear-gradient(90deg, var(--accent-calendar), rgba(139,157,217,0.3)); }
+  .card.note::before     { background: linear-gradient(90deg, var(--accent-note), rgba(212,104,122,0.3)); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .card-icon {
+    font-size: 1.2em;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .card.weather .card-icon  { background: rgba(232,180,76,0.15); }
+  .card.email .card-icon    { background: rgba(109,186,151,0.15); }
+  .card.calendar .card-icon { background: rgba(139,157,217,0.15); }
+  .card.note .card-icon     { background: rgba(212,104,122,0.15); }
 
   .card h2 {
-    font-size: 0.95em;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1.2em;
+    font-weight: 400;
+    letter-spacing: 0.3px;
   }
-  .card.weather h2  { color: #f0a500; }
-  .card.email h2    { color: #4ecca3; }
-  .card.calendar h2 { color: #7b68ee; }
-  .card.note h2     { color: #e94560; }
+  .card.weather h2  { color: var(--accent-weather); }
+  .card.email h2    { color: var(--accent-email); }
+  .card.calendar h2 { color: var(--accent-calendar); }
+  .card.note h2     { color: var(--accent-note); }
 
   .card p, .card li {
-    font-size: 1.08em;
-    line-height: 1.6;
-    color: #bbb;
+    font-size: 1.12em;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .card p strong, .card li strong {
+    color: var(--text-primary);
+    font-weight: 600;
   }
   .card ul {
     list-style: none;
     padding: 0;
   }
   .card ul li {
-    padding: 4px 0;
-    border-bottom: 1px solid #2b2b3a;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
   }
-  .card ul li:last-child { border-bottom: none; }
+  .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
+  .card ul li:first-child { padding-top: 0; }
 
+  /* --- Sign-off --- */
   .signoff {
-    max-width: 600px;
-    margin: 20px auto 0;
-    font-size: 1.05em;
-    line-height: 1.5;
-    color: #999;
     text-align: center;
-    padding-bottom: 32px;
+    font-size: 1.08em;
+    line-height: 1.6;
+    color: var(--text-muted);
+    padding: 28px 12px 16px;
+    animation: fadeUp 0.5s ease-out 0.5s both;
   }
 
+  /* --- Footer --- */
   .footer {
     text-align: center;
-    padding: 12px 0 24px;
-    font-size: 0.85em;
-    color: #555;
+    padding: 8px 0 32px;
+    font-size: 0.82em;
+    color: rgba(138,133,125,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    animation: fadeUp 0.5s ease-out 0.55s both;
+  }
+
+  /* --- Animations --- */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Reduce motion for those who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+    }
   }
 </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Morning Brief</h1>
-    <div class="date">Monday, March 16, 2026</div>
+  <div class="container">
+    <div class="header">
+      <div class="label">Miles Monroe</div>
+      <h1>Morning Brief</h1>
+      <div class="date">Monday, March 16, 2026</div>
+      <div class="divider"></div>
+    </div>
+
+    <div class="greeting">Good morning, John. The sun is doing its thing again in Phoenix, which at this point feels less like weather and more like a lifestyle choice you keep making.</div>
+
+    <div class="cards">
+      <div class="card weather">
+        <div class="card-header">
+          <div class="card-icon">&#9728;</div>
+          <h2>Weather</h2>
+        </div>
+        <p><strong>Currently 72°F</strong>, clear skies. High of 88°F, low of 61°F. A genuinely pleasant March day before the sun remembers it has a grudge against this city.</p>
+      </div>
+
+      <div class="card email">
+        <div class="card-header">
+          <div class="card-icon">&#9993;</div>
+          <h2>Inbox</h2>
+        </div>
+        <ul>
+          <li><strong>Greystar Property Group</strong> -- Requesting updated 3D floor plans for Phase 2 units. Sent Saturday, probably expecting a Monday reply.</li>
+          <li><strong>QuickBooks</strong> -- Payment received: $4,200 from Camden Living. The good kind of email.</li>
+        </ul>
+      </div>
+
+      <div class="card calendar">
+        <div class="card-header">
+          <div class="card-icon">&#128197;</div>
+          <h2>Calendar</h2>
+        </div>
+        <ul>
+          <li><strong>10:00 AM</strong> -- Team sync (Google Meet)</li>
+          <li><strong>2:30 PM</strong> -- Campbell orthodontist pickup</li>
+          <li><strong>7:15 PM</strong> -- Hockey at Ice Den</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="signoff">Three things on the calendar, two emails that matter, and zero reasons to check your inbox again before 10. That's what I call a Monday with potential.</div>
+    <div class="footer">Miles Monroe</div>
   </div>
-
-  <div class="greeting">Good morning, John. The sun is doing its thing again in Phoenix, which at this point feels less like weather and more like a lifestyle choice you keep making.</div>
-
-  <div class="cards">
-    <div class="card weather">
-      <h2>Weather</h2>
-      <p><strong>Currently 72°F</strong>, clear skies. High of 88°F, low of 61°F. A genuinely pleasant March day before the sun remembers it has a grudge against this city.</p>
-    </div>
-
-    <div class="card email">
-      <h2>Inbox</h2>
-      <ul>
-        <li><strong>Greystar Property Group</strong> -- Requesting updated 3D floor plans for Phase 2 units. Sent Saturday, probably expecting a Monday reply.</li>
-        <li><strong>QuickBooks</strong> -- Payment received: $4,200 from Camden Living. The good kind of email.</li>
-      </ul>
-    </div>
-
-    <div class="card calendar">
-      <h2>Calendar</h2>
-      <ul>
-        <li><strong>10:00 AM</strong> -- Team sync (Google Meet)</li>
-        <li><strong>2:30 PM</strong> -- Campbell orthodontist pickup</li>
-        <li><strong>7:15 PM</strong> -- Hockey at Ice Den</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="signoff">Three things on the calendar, two emails that matter, and zero reasons to check your inbox again before 10. That's what I call a Monday with potential.</div>
-  <div class="footer">Miles Monroe</div>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');</script>
 </body>
 </html>
