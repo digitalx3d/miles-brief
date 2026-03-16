@@ -1,0 +1,13 @@
+{
+  "name": "Miles Morning Brief",
+  "short_name": "Brief",
+  "start_url": "/miles-brief/",
+  "scope": "/miles-brief/",
+  "display": "standalone",
+  "background_color": "#2b2b3a",
+  "theme_color": "#e94560",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
