@@ -17,7 +17,9 @@
     --text-primary: #645d54;
     --text-secondary: #69655d;
     --accent-weather: #fee381;
+    --accent-weather-text: #9a8520;
     --accent-email: #3dfff2;
+    --accent-email-text: #1a8a80;
     --accent-calendar: #4476ab;
     --accent-note: #a05a6a;
     --border-subtle: rgba(0,0,0,0.08);
@@ -44,6 +46,7 @@
     margin: 0 auto;
   }
 
+  /* --- Header --- */
   .header {
     text-align: center;
     padding: 36px 0 6px;
@@ -62,6 +65,7 @@
     color: var(--text-secondary);
     opacity: 0.7;
     margin-top: 8px;
+    font-weight: 400;
   }
   .header .divider {
     width: 48px;
@@ -72,6 +76,7 @@
     opacity: 0.7;
   }
 
+  /* --- Greeting --- */
   .greeting {
     text-align: center;
     font-size: 1.34em;
@@ -82,6 +87,7 @@
     animation: fadeDown 0.6s ease-out 0.1s both;
   }
 
+  /* --- Cards --- */
   .cards {
     display: flex;
     flex-direction: column;
@@ -156,7 +162,10 @@
     color: var(--text-primary);
     font-weight: 600;
   }
-  .card ul { list-style: none; }
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
   .card ul li {
     padding: 8px 0;
     border-bottom: 1px solid var(--border-subtle);
@@ -164,6 +173,7 @@
   .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
   .card ul li:first-child { padding-top: 0; }
 
+  /* --- Sign-off --- */
   .signoff {
     text-align: center;
     font-size: 1.35em;
@@ -174,6 +184,7 @@
     animation: fadeUp 0.5s ease-out 0.5s both;
   }
 
+  /* --- Footer --- */
   .footer {
     display: flex;
     align-items: center;
@@ -197,6 +208,7 @@
     font-weight: 600;
   }
 
+  /* --- Animations --- */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -205,6 +217,7 @@
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -217,11 +230,11 @@
   <div class="container">
     <div class="header">
       <h1>Morning Brief</h1>
-      <div class="date">Monday, March 16, 2026</div>
+      <div class="date">Tuesday, March 17, 2026</div>
       <div class="divider"></div>
     </div>
 
-    <div class="greeting">Good morning, John. The sun is doing its thing again in Phoenix, which at this point feels less like weather and more like a lifestyle choice you keep making.</div>
+    <div class="greeting">Good morning, John. Happy St. Patrick's Day. It's spring break, 64° right now, and the desert is already warming up to do something deeply unreasonable.</div>
 
     <div class="cards">
       <div class="card weather">
@@ -229,7 +242,9 @@
           <div class="card-icon">&#9728;</div>
           <h2>Weather</h2>
         </div>
-        <p><strong>Currently 72°F</strong>, clear skies. High of 88°F, low of 61°F. A genuinely pleasant March day before the sun remembers it has a grudge against this city.</p>
+        <p><strong>Currently 64°F</strong>, mostly sunny.</p>
+<p>High of <strong>97°F</strong> today. If Phoenix hits 100° on March 17th, it would be the earliest triple-digit day on record (current record: March 26, 1988). So that's fun.</p>
+<p>Low tonight around 68°F. Dry and clear.</p>
       </div>
 
       <div class="card email">
@@ -238,9 +253,13 @@
           <h2>Inbox</h2>
         </div>
         <ul>
-          <li><strong>Greystar Property Group</strong> -- Requesting updated 3D floor plans for Phase 2 units. Sent Saturday, probably expecting a Monday reply.</li>
-          <li><strong>QuickBooks</strong> -- Payment received: $4,200 from Camden Living. The good kind of email.</li>
-        </ul>
+<li><strong>Engrain / Workato:</strong> New work request for Standard Background Image + Unit Map Tracing. Came in yesterday.</li>
+<li><strong>Justin Gregonis (Upward Architects):</strong> Rendering thread, 4 messages. Last activity March 11. Worth checking if he's waiting on you.</li>
+<li><strong>Ian Galindo (Workfront):</strong> Comment on Unit Map Tracing for Tradition on Rio / Partner Style H. From Feb 4, still unread.</li>
+<li><strong>Ahwatukee HOA:</strong> Invite to vote on Board of Management. Came in overnight.</li>
+<li><strong>Roblox:</strong> One of the twins wants to link a parent account. You starred this one before.</li>
+<li><strong>Tax docs:</strong> PNC mortgage and Capital One tax return documents still sitting unread from January.</li>
+</ul>
       </div>
 
       <div class="card calendar">
@@ -249,10 +268,12 @@
           <h2>Calendar</h2>
         </div>
         <ul>
-          <li><strong>10:00 AM</strong> -- Team sync (Google Meet)</li>
-          <li><strong>2:30 PM</strong> -- Campbell orthodontist pickup</li>
-          <li><strong>7:15 PM</strong> -- Hockey at Ice Den</li>
-        </ul>
+<li><strong>Spring Break</strong> all week</li>
+<li><strong>St. Patrick's Day</strong> &#9752;</li>
+<li><strong>12:15 PM</strong> Adult Stick Time (hockey)</li>
+<li><strong>5:00 PM</strong> Andrew Band Practice</li>
+<li><strong>7:00 PM</strong> Versace Practice (Campbell cheer)</li>
+</ul>
       </div>
 
       <div class="card note">
@@ -260,11 +281,11 @@
           <div class="card-icon">&#127917;</div>
           <h2>Miles' Take</h2>
         </div>
-        <p>I told my therapist I was worried about the twins growing up too fast. She said that's normal. I said no, they've discovered AI tools and now they're automating their chores. I'm being disrupted by twelve-year-olds. She raised her rate.</p>
+        <p>It's St. Patrick's Day in Phoenix, which means the sun is already celebrating by trying to set a record. 97 degrees in March. The desert doesn't ease you into summer so much as shove you into it from behind while you're still wearing a hoodie. On the bright side, you've got hockey at noon, band practice, cheer practice, and a holiday. You're basically a logistics coordinator who also does 3D renderings on the side. Somewhere, a leprechaun is looking at your schedule and thinking, "No thanks, I'll keep the pot of gold."</p>
       </div>
     </div>
 
-    <div class="signoff">Three things on the calendar, two emails that matter, and zero reasons to check your inbox again before 10. That's what I call a Monday with potential.</div>
+    <div class="signoff">Enjoy the stick time, wrangle the twins, and try not to melt. I'll be here if you need me.</div>
     <div class="footer">
       <img src="miles_profile.png" alt="">
       <span>Miles Monroe</span>
