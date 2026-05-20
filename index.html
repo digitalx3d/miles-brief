@@ -46,7 +46,6 @@
     margin: 0 auto;
   }
 
-  /* --- Header --- */
   .header {
     text-align: center;
     padding: 36px 0 6px;
@@ -76,7 +75,6 @@
     opacity: 0.7;
   }
 
-  /* --- Greeting --- */
   .greeting {
     text-align: center;
     font-size: 1.34em;
@@ -87,7 +85,6 @@
     animation: fadeDown 0.6s ease-out 0.1s both;
   }
 
-  /* --- Cards --- */
   .cards {
     display: flex;
     flex-direction: column;
@@ -173,7 +170,6 @@
   .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
   .card ul li:first-child { padding-top: 0; }
 
-  /* --- Sign-off --- */
   .signoff {
     text-align: center;
     font-size: 1.35em;
@@ -184,7 +180,6 @@
     animation: fadeUp 0.5s ease-out 0.5s both;
   }
 
-  /* --- Footer --- */
   .footer {
     display: flex;
     align-items: center;
@@ -208,7 +203,6 @@
     font-weight: 600;
   }
 
-  /* --- Animations --- */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -230,11 +224,11 @@
   <div class="container">
     <div class="header">
       <h1>Morning Brief</h1>
-      <div class="date">Tuesday, May 19, 2026</div>
+      <div class="date">Wednesday, May 20, 2026</div>
       <div class="divider"></div>
     </div>
 
-    <div class="greeting">Good morning, John. The twins turn 12 in four days, payroll's due today, and a few things in your inbox need a look.</div>
+    <div class="greeting">Good morning, John. You have a scheduling conflict to sort out and a few things that need your attention. Midweek -- let's keep it moving.</div>
 
     <div class="cards">
       <div class="card weather">
@@ -242,7 +236,8 @@
           <div class="card-icon">&#9728;</div>
           <h2>Weather</h2>
         </div>
-        <p><strong>92&#176;F</strong> high / <strong>70&#176;F</strong> low. Sunny with some clouds, light southwest winds. No rain.</p>
+        <p><strong>95&#176;F</strong> high / <strong>70&#176;F</strong> low</p>
+<p>Mix of clouds and sun. Pleasant morning, warm afternoon.</p>
       </div>
 
       <div class="card email">
@@ -251,11 +246,11 @@
           <h2>Inbox</h2>
         </div>
         <ul>
-          <li><strong>USA Hockey - SafeSport Expiration</strong> - Your SafeSport certification is expiring. Needs renewal to stay registered.</li>
-          <li><strong>ADOT - Vehicle Registration Renewal</strong> - Been sitting since April 25. Don't let this one lapse.</li>
-          <li><strong>USAA - Auto Policy Renewal</strong> - Policy renewal notice, flagged important.</li>
-          <li><strong>iToo Software - Order</strong> - Software order confirmation. Worth confirming it's what you expected.</li>
-        </ul>
+<li><strong>USA Hockey -- SafeSport Expiration</strong> -- Your SafeSport certification is expiring. Needs action before next season.</li>
+<li><strong>USAA Auto Policy Renewal</strong> -- Starred and flagged important. Review the renewal terms.</li>
+<li><strong>USAA Insurance Bill</strong> -- New bill arrived today.</li>
+<li><strong>School of Rock</strong> -- Makeup drum lesson confirmed.</li>
+</ul>
       </div>
 
       <div class="card calendar">
@@ -264,8 +259,10 @@
           <h2>Calendar</h2>
         </div>
         <ul>
-          <li><strong>10:00 AM</strong> - Run Payroll (ADP)</li>
-        </ul>
+<li><strong>9:30 - 10:00 AM</strong> -- DigitalX 1:1 (with Engrain)</li>
+<li><strong>9:30 - 11:00 AM</strong> -- AI Mastermind (Zoom, Robb Green)</li>
+</ul>
+<p><em>Heads up: these two overlap at 9:30.</em></p>
       </div>
 
       <div class="card note">
@@ -273,11 +270,11 @@
           <div class="card-icon">&#127917;</div>
           <h2>Miles' Take</h2>
         </div>
-        <p>Four days until Emmett and Andrew are 12, which puts you exactly one year from having three teenagers in the house at once. I'd suggest stockpiling patience now, the way other people stockpile canned goods before a storm. Except the storm lasts about six years.</p>
+        <p>Two meetings at 9:30. The classic double-book, a move I thought was reserved for dentists and people who peaked in high school. On the bright side, if you join both Zoom calls at once you can finally live out your dream of being a twin yourself. Emmett and Andrew would be proud.</p>
       </div>
     </div>
 
-    <div class="signoff">Payroll first, vehicle registration before ADOT sends a sternly worded follow-up. Go get it.</div>
+    <div class="signoff">Sort the overlap, knock out that SafeSport renewal, and enjoy the drums later. Wednesday's yours.</div>
     <div class="footer">
       <img src="miles_profile.png" alt="">
       <span>Miles Monroe</span>
