@@ -46,6 +46,7 @@
     margin: 0 auto;
   }
 
+  /* --- Header --- */
   .header {
     text-align: center;
     padding: 36px 0 6px;
@@ -75,6 +76,7 @@
     opacity: 0.7;
   }
 
+  /* --- Greeting --- */
   .greeting {
     text-align: center;
     font-size: 1.34em;
@@ -85,6 +87,7 @@
     animation: fadeDown 0.6s ease-out 0.1s both;
   }
 
+  /* --- Cards --- */
   .cards {
     display: flex;
     flex-direction: column;
@@ -170,6 +173,7 @@
   .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
   .card ul li:first-child { padding-top: 0; }
 
+  /* --- Sign-off --- */
   .signoff {
     text-align: center;
     font-size: 1.35em;
@@ -180,6 +184,7 @@
     animation: fadeUp 0.5s ease-out 0.5s both;
   }
 
+  /* --- Footer --- */
   .footer {
     display: flex;
     align-items: center;
@@ -203,6 +208,7 @@
     font-weight: 600;
   }
 
+  /* --- Animations --- */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -224,11 +230,11 @@
   <div class="container">
     <div class="header">
       <h1>Morning Brief</h1>
-      <div class="date">Monday, May 25, 2026</div>
+      <div class="date">Tuesday, May 26, 2026</div>
       <div class="divider"></div>
     </div>
 
-    <div class="greeting">Good morning, John. Happy Memorial Day. The office may be closed, but the inbox never got the memo.</div>
+    <div class="greeting">Good morning, John. Short week courtesy of Memorial Day, which means Tuesday gets to cosplay as Monday. Let's see what's waiting.</div>
 
     <div class="cards">
       <div class="card weather">
@@ -236,8 +242,8 @@
           <div class="card-icon">&#9728;</div>
           <h2>Weather</h2>
         </div>
-        <p><strong>Mainly sunny</strong> today in Phoenix.</p>
-<p>High of <strong>97&#176;F</strong>, low of <strong>72&#176;F</strong>. Winds SSE shifting to WSW at 10-15 mph.</p>
+        <p><strong>Currently 86°F</strong> and mostly sunny.</p>
+<p>High of <strong>96°F</strong>, low of <strong>69°F</strong>. Winds 11–27 mph. Humidity around 24%.</p>
       </div>
 
       <div class="card email">
@@ -246,12 +252,10 @@
           <h2>Inbox</h2>
         </div>
         <ul>
-<li><strong>NameHero Billing</strong> -- ticket reply about changing your hosting renewal term. Worth reviewing to confirm it's set how you want.</li>
-<li><strong>PayPal receipt</strong> -- payment confirmation from this morning.</li>
-<li><strong>Elementor invoice</strong> -- new invoice INVUS2600120130.</li>
-<li><strong>Steph Ozimek (Workfront)</strong> -- comment on the Engrain background image + unit map tracing for The District at Tar River. May need a response.</li>
-<li><strong>USA Hockey SafeSport</strong> (starred) -- your SafeSport certification is expiring. Still unresolved.</li>
-<li><strong>USAA Auto Policy Renewal</strong> (starred) -- renewal notice still sitting unread.</li>
+<li><strong>Steph Ozimek (Workfront)</strong> — Comment on the Engrain background/unit map tracing task for The District at Tar River. Worth a look.</li>
+<li><strong>Mike Shtopko (Day Off)</strong> — Submitted a new PTO request. Needs your approval.</li>
+<li><strong>Kim shared "Boston Itinerary"</strong> via Google Docs. Starred and waiting for you.</li>
+<li><strong>USA Hockey</strong> — SafeSport certification expiring. Starred from last week, still unread.</li>
 </ul>
       </div>
 
@@ -261,7 +265,7 @@
           <h2>Calendar</h2>
         </div>
         <ul>
-<li><strong>3:30 - 4:30 PM</strong> -- Chandler 3x3 Hockey (Bantam) at East Rink</li>
+<li><strong>5:30 PM</strong> — Drum Lesson</li>
 </ul>
       </div>
 
@@ -270,11 +274,11 @@
           <div class="card-icon">&#127917;</div>
           <h2>Miles' Take</h2>
         </div>
-        <p>Memorial Day: the one holiday where the kids are off school and you still end up at a hockey rink. At this point the twins probably think "day off" is just code for "ice time in a different building."</p>
+        <p>Kim shared a Boston itinerary, Mike wants time off, and you've got a drum lesson tonight. If you approve the PTO fast enough, maybe you can claim you were being productive before the paradiddles start. The bar for Tuesday-that-feels-like-Monday is mercifully low.</p>
       </div>
     </div>
 
-    <div class="signoff">Enjoy the holiday. Try to do at least one thing that doesn't involve a screen or a puck. -- Miles</div>
+    <div class="signoff">Go handle that PTO request before it gets awkward. Then go hit some drums. — Miles</div>
     <div class="footer">
       <img src="miles_profile.png" alt="">
       <span>Miles Monroe</span>
