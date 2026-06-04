@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" data-ha-style="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Official Plan to NOT Lose My Mind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow:  #F8C825;
+      --yellow-bg: #FFFBEA;
+      --yellow-border: #F0D060;
+
+      --teal:    #0D9488;
+      --teal-bg: #F0FDFA;
+      --teal-border: #5EEAD4;
+
+      --purple:  #7C3AED;
+      --purple-bg: #F5F3FF;
+      --purple-border: #C4B5FD;
+
+      --coral:   #EF4444;
+      --coral-bg: #FFF5F5;
+      --coral-border: #FCA5A5;
+
+      --green:   #059669;
+      --green-bg: #F0FDF4;
+      --green-border: #6EE7B7;
+
+      --blue:    #2563EB;
+      --blue-bg: #EFF6FF;
+      --blue-border: #93C5FD;
+
+      --orange:  #EA580C;
+      --orange-bg: #FFF7ED;
+      --orange-border: #FDB07A;
+
+      --pink:    #DB2777;
+      --pink-bg: #FDF2F8;
+      --pink-border: #F9A8D4;
+
+      --bonus:   #7C3AED;
+      --bonus-bg: #FAF5FF;
+      --bonus-border: #D8B4FE;
+
+      --fg: #1E1B19;
+      --fg-2: #4B3C34;
+      --fg-muted: #8D7166;
+      --bg: #FFFDF9;
+      --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      --card-shadow-hover: 0 8px 28px rgba(0,0,0,0.13);
+
+      --font-headline: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      padding: 0 0 80px;
+    }
+
+    /* ---- HEADER ---- */
+    .header {
+      background: linear-gradient(135deg, #7C3AED 0%, #DB2777 50%, #EA580C 100%);
+      padding: 40px 20px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .header-emoji {
+      font-size: 48px;
+      margin-bottom: 8px;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+    .header h1 {
+      font-family: var(--font-headline);
+      font-size: clamp(22px, 6vw, 34px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .header h1 span.not {
+      color: #F8C825;
+      font-style: italic;
+    }
+    .header-subtitle {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+    }
+    .header-tagline {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      font-style: italic;
+    }
+    .header-quote {
+      margin-top: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+      font-style: italic;
+    }
+    .header-quote::before { content: '"'; }
+    .header-quote::after  { content: '"'; }
+
+    /* ---- PROGRESS BAR ---- */
+    .progress-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,253,249,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 10px 20px 12px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .progress-label span {
+      font-family: var(--font-headline);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fg-2);
+    }
+    .progress-label .pct {
+      font-size: 13px;
+      color: var(--purple);
+      font-weight: 700;
+    }
+    .progress-track {
+      height: 10px;
+      background: #EDE9F8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #7C3AED, #DB2777, #EA580C);
+      border-radius: 999px;
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      width: 0%;
+    }
+
+    /* ---- CONTAINER ---- */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 24px 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ---- TASK CARD ---- */
+    .task-card {
+      border-radius: var(--radius-lg);
+      border: 2px solid transparent;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .task-card:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+    .task-card.done-card {
+      opacity: 0.7;
+    }
+
+    /* Color themes */
+    .theme-yellow { background: var(--yellow-bg); border-color: var(--yellow-border); }
+    .theme-teal   { background: var(--teal-bg);   border-color: var(--teal-border); }
+    .theme-purple { background: var(--purple-bg); border-color: var(--purple-border); }
+    .theme-coral  { background: var(--coral-bg);  border-color: var(--coral-border); }
+    .theme-green  { background: var(--green-bg);  border-color: var(--green-border); }
+    .theme-blue   { background: var(--blue-bg);   border-color: var(--blue-border); }
+    .theme-orange { background: var(--orange-bg); border-color: var(--orange-border); }
+    .theme-pink   { background: var(--pink-bg);   border-color: var(--pink-border); }
+    .theme-bonus  { background: var(--bonus-bg);  border-color: var(--bonus-border); }
+
+    /* ---- CARD HEADER ---- */
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 18px 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-headline);
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 2px;
+    }
+    .theme-yellow .card-num  { background: var(--yellow); color: #333; }
+    .theme-teal   .card-num  { background: var(--teal); }
+    .theme-purple .card-num  { background: var(--purple); }
+    .theme-coral  .card-num  { background: var(--coral); }
+    .theme-green  .card-num  { background: var(--green); }
+    .theme-blue   .card-num  { background: var(--blue); }
+    .theme-orange .card-num  { background: var(--orange); }
+    .theme-pink   .card-num  { background: var(--pink); }
+    .theme-bonus  .card-num  { background: var(--bonus); }
+
+    .card-title-wrap { flex: 1; }
+    .card-title {
+      font-family: var(--font-headline);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .task-card.done-card .card-title {
+      text-decoration: line-through;
+      color: var(--fg-muted);
+    }
+    .card-mini-progress {
+      margin-top: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--fg-muted);
+    }
+    .card-chevron {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--fg-muted);
+      transition: transform 0.25s;
+      margin-top: 6px;
+    }
+    .task-card.open .card-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ---- CARD BODY ---- */
+    .card-body {
+      display: none;
+      padding: 0 18px 18px;
+    }
+    .task-card.open .card-body {
+      display: block;
+    }
+
+    /* ---- CHECKLIST ---- */
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .checklist li label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s;
+    }
+    .checklist li label:hover {
+      background: rgba(0,0,0,0.04);
+    }
+    .checklist li input[type="checkbox"] {
+      display: none;
+    }
+    .check-box {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2.5px solid currentColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-yellow .check-box { color: #B8860B; }
+    .theme-teal   .check-box { color: var(--teal); }
+    .theme-purple .check-box { color: var(--purple); }
+    .theme-coral  .check-box { color: var(--coral); }
+    .theme-green  .check-box { color: var(--green); }
+    .theme-blue   .check-box { color: var(--blue); }
+    .theme-orange .check-box { color: var(--orange); }
+    .theme-pink   .check-box { color: var(--pink); }
+    .theme-bonus  .check-box { color: var(--bonus); }
+
+    .check-box svg {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    input[type="checkbox"]:checked + .check-box {
+      background: currentColor;
+      border-color: currentColor;
+      transform: scale(1.15);
+    }
+    input[type="checkbox"]:checked + .check-box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .check-label {
+      font-size: 14.5px;
+      line-height: 1.45;
+      color: var(--fg);
+      transition: all 0.25s;
+    }
+    input[type="checkbox"]:checked ~ .check-label,
+    label:has(input[type="checkbox"]:checked) .check-label {
+      text-decoration: line-through;
+      color: var(--fg-muted);
+    }
+
+    /* ---- CAPTION / NOTE ---- */
+    .card-note {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--fg-2);
+      line-height: 1.5;
+      background: rgba(0,0,0,0.04);
+      border-left: 3px solid rgba(0,0,0,0.12);
+    }
+    .card-note strong {
+      font-style: normal;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.7;
+    }
+    .card-sign {
+      margin-top: 12px;
+      display: inline-block;
+      background: linear-gradient(135deg, #1E3A5F, #2563EB);
+      color: #fff;
+      font-family: var(--font-headline);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ---- BONUS CARD ---- */
+    .bonus-card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #4F1D96, #7C3AED);
+      border: 2px solid #A78BFA;
+      box-shadow: 0 8px 28px rgba(124,58,237,0.25);
+      padding: 22px 20px;
+      color: #fff;
+    }
+    .bonus-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      font-family: var(--font-headline);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+    .bonus-title {
+      font-family: var(--font-headline);
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .bonus-checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .bonus-checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      padding: 6px 0;
+    }
+    .bonus-checklist input[type="checkbox"] { display: none; }
+    .bonus-check-box {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2.5px solid rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .bonus-check-box svg { opacity: 0; transform: scale(0.5); transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .bonus-checklist input[type="checkbox"]:checked + .bonus-check-box {
+      background: rgba(255,255,255,0.9);
+      border-color: #fff;
+      transform: scale(1.15);
+    }
+    .bonus-checklist input[type="checkbox"]:checked + .bonus-check-box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .bonus-check-label {
+      font-size: 14.5px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.95);
+      transition: all 0.25s;
+    }
+    .bonus-checklist label:has(input:checked) .bonus-check-label {
+      text-decoration: line-through;
+      color: rgba(255,255,255,0.5);
+    }
+    .bonus-notes { margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.75); font-style: italic; line-height: 1.5; }
+    .bonus-notes span { display: block; }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      max-width: 640px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+      text-align: center;
+    }
+    .footer-text {
+      font-size: 13px;
+      color: var(--fg-muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .footer-text strong {
+      display: block;
+      margin-top: 4px;
+      font-family: var(--font-headline);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--fg-2);
+    }
+
+    /* ---- CELEBRATION ---- */
+    #celebration {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    #celebration.active {
+      display: flex;
+    }
+    .celebration-msg {
+      background: linear-gradient(135deg, #7C3AED, #DB2777);
+      color: #fff;
+      font-family: var(--font-headline);
+      font-size: clamp(18px, 5vw, 26px);
+      font-weight: 800;
+      text-align: center;
+      padding: 28px 36px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+      pointer-events: all;
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      max-width: 320px;
+    }
+    .celebration-msg span { display: block; font-size: 48px; margin-bottom: 12px; }
+    .celebration-msg p { font-size: 14px; font-weight: 400; opacity: 0.85; margin-top: 8px; }
+    .celebration-close {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      pointer-events: all;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* ---- CONFETTI ---- */
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      animation: confettiFall linear forwards;
+      pointer-events: none;
+      z-index: 9998;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ---- SCROLL ANIMATION ---- */
+    .task-card {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .task-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s;
+    }
+
+    /* ---- MOBILE ---- */
+    @media (max-width: 400px) {
+      .card-header { padding: 14px 14px 10px; }
+      .card-body { padding: 0 14px 14px; }
+      .card-title { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <span class="header-emoji">🧠</span>
+  <h1>The Official Plan to<br><span class="not">NOT</span> Lose My Mind</h1>
+  <div class="header-subtitle">AKA Mom Brain To-Do List</div>
+  <div class="header-tagline">I have too many chords. So many. Help.</div>
+  <div class="header-quote">I don't need peace. I just need a plan.</div>
+</div>
+
+<!-- Progress -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>Mission Progress</span>
+    <span class="pct" id="pct-text">0%</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</div>
+
+<!-- Main checklist -->
+<div class="container" id="main-list">
+
+  <!-- 1 -->
+  <div class="task-card theme-yellow" data-card="1">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">1</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🧊 Move Mini Fridge to Sunroom</div>
+        <div class="card-mini-progress" id="mini-1"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="1">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Stack mini fridge with fizzy water</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Do we need more fizzy water?</span></label></li>
+      </ul>
+      <div class="card-note">
+        <strong>Motivation</strong>
+        If we stack it, they will come.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="task-card theme-teal" data-card="2">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">2</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🧱 Move Legos (Without Destroying Creations) + Clear Homeschool Stuff</div>
+        <div class="card-mini-progress" id="mini-2"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="2">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Move Legos (without destroying creations)</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Clear homeschool stuff</span></label></li>
+      </ul>
+      <div class="card-note">PLEASE DON'T STEP ON US (AGAIN)</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="task-card theme-purple" data-card="3">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">3</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🪡 Put New Tablecloth on Dining Room Table</div>
+        <div class="card-mini-progress" id="mini-3"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="3">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Put new tablecloth on dining room table</span></label></li>
+      </ul>
+      <div class="card-note">Because we're fancy like that. (At least for 10 minutes.)</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="task-card theme-coral" data-card="4">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">4</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🌮 Make List of Foods + What Needs to Be Prepped Today</div>
+        <div class="card-mini-progress" id="mini-4"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="4">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Fruit</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Chips</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Cheese</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Tacos (always tacos)</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Something green (maybe)</span></label></li>
+      </ul>
+      <div class="card-note">Future me will thank me. Present me is just winging it.</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="task-card theme-green" data-card="5">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">5</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🎄 Today's Random Christmas Tasks</div>
+        <div class="card-mini-progress" id="mini-5"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="5">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Move mattress + rug to shed</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Make gold van disappear</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Turn into $100 bill (easy, right?)</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Steam the sofa in the living room</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Set up kids outfits for tomorrow</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Put TVs in shed</span></label></li>
+      </ul>
+      <div class="card-note">
+        <strong>Potential Uses for $100 Bill</strong>
+        More coffee &bull; More patience &bull; College fund &bull; A spa day &bull; (jk... more coffee)
+      </div>
+      <div class="card-note" style="margin-top:8px">
+        <strong>Santa says</strong>
+        One small step for you, one giant step away from chaos.
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="task-card theme-blue" data-card="6">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">6</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🔌 The Charging Station (A Gift to Humanity)</div>
+        <div class="card-mini-progress" id="mini-6"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="6">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Organize the charging station</span></label></li>
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Tame the 1000 cords. All of them.</span></label></li>
+      </ul>
+      <div class="card-note">I have 1000 cords. I have all the cords. Let's make them useful for once.</div>
+      <div class="card-sign">⚡ CHARGE HERE — NOT YOUR ATTITUDE</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="task-card theme-orange" data-card="7">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">7</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🎮 Organize Game + Fidget Shelf Under the TV</div>
+        <div class="card-mini-progress" id="mini-7"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="7">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Organize game + fidget shelf under the TV</span></label></li>
+      </ul>
+      <div class="card-note">Maximize seating for hot day: tomorrow!</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="task-card theme-pink" data-card="8">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">8</div>
+      <div class="card-title-wrap">
+        <div class="card-title">🎹 Any Cordelia: Organize Piano Area</div>
+        <div class="card-mini-progress" id="mini-8"></div>
+      </div>
+      <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="card-body">
+      <ul class="checklist" data-group="8">
+        <li><label><input type="checkbox" onchange="updateProgress()"><span class="check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="check-label">Organize piano area</span></label></li>
+      </ul>
+      <div class="card-note">Pretty keys need a pretty home.</div>
+      <div class="card-note" style="margin-top:8px">Also, future concerts don't organize themselves.</div>
+    </div>
+  </div>
+
+  <!-- Bonus -->
+  <div class="bonus-card task-card visible" style="opacity:1;transform:none;">
+    <div class="bonus-badge">⭐ Bonus Mission</div>
+    <div class="bonus-title">Organize My Desk for 10 Minutes So I Can Close the Drawers.</div>
+    <ul class="bonus-checklist">
+      <li><label><input type="checkbox" onchange="updateProgress()"><span class="bonus-check-box"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bonus-check-label">Organize desk so the drawers can actually close</span></label></li>
+    </ul>
+    <div class="bonus-notes">
+      <span>Don't expect miracles. Just... progress.</span>
+      <span style="margin-top:4px;color:rgba(255,255,255,0.9);font-style:normal;font-weight:600;">10 minutes can change everything!</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-text">
+    I may be disorganized, but at least I have a plan.
+    <strong>NOW WHERE DID I PUT THAT PAPER?</strong>
+  </div>
+</div>
+
+<!-- Celebration overlay -->
+<div id="celebration">
+  <div class="celebration-msg">
+    <span>🎉</span>
+    YOU DID IT!<br>Mind: officially not lost.
+    <p>The plan worked. You're basically a hero.</p>
+    <button class="celebration-close" onclick="document.getElementById('celebration').classList.remove('active')">Thanks, I know 😎</button>
+  </div>
+</div>
+
+<script>
+  // ---- Toggle card open/close ----
+  function toggleCard(headerEl) {
+    const card = headerEl.closest('.task-card');
+    card.classList.toggle('open');
+  }
+
+  // Open all cards on load
+  document.querySelectorAll('.task-card[data-card]').forEach(c => c.classList.add('open'));
+
+  // ---- Progress ----
+  function updateProgress() {
+    const allBoxes   = document.querySelectorAll('input[type="checkbox"]');
+    const checked    = document.querySelectorAll('input[type="checkbox"]:checked');
+    const total      = allBoxes.length;
+    const done       = checked.length;
+    const pct        = total ? Math.round((done / total) * 100) : 0;
+
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('pct-text').textContent = pct + '%';
+
+    // Update mini-progress per group
+    for (let g = 1; g <= 8; g++) {
+      const group = document.querySelector(`.checklist[data-group="${g}"]`);
+      if (!group) continue;
+      const gAll  = group.querySelectorAll('input[type="checkbox"]').length;
+      const gDone = group.querySelectorAll('input[type="checkbox"]:checked').length;
+      const mini  = document.getElementById(`mini-${g}`);
+      if (mini) {
+        mini.textContent = gDone === gAll && gAll > 0
+          ? '✓ Done!'
+          : `${gDone} / ${gAll}`;
+      }
+      // Mark card as done if all subtasks checked
+      const card = document.querySelector(`.task-card[data-card="${g}"]`);
+      if (card) card.classList.toggle('done-card', gDone === gAll && gAll > 0);
+    }
+
+    // Celebrate!
+    if (pct === 100) {
+      setTimeout(() => {
+        document.getElementById('celebration').classList.add('active');
+        launchConfetti();
+      }, 300);
+    }
+  }
+
+  // ---- Confetti ----
+  function launchConfetti() {
+    const colors = ['#F8C825','#7C3AED','#DB2777','#10B981','#2563EB','#EF4444','#EA580C'];
+    for (let i = 0; i < 80; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.left    = Math.random() * 100 + 'vw';
+      el.style.top     = '-20px';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.width   = (6 + Math.random() * 8) + 'px';
+      el.style.height  = (6 + Math.random() * 8) + 'px';
+      el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      el.style.animationDelay   = (Math.random() * 0.8) + 's';
+      document.body.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }
+  }
+
+  // ---- Scroll-in animation ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.task-card[data-card]').forEach((c, i) => {
+    c.style.transitionDelay = (i * 0.05) + 's';
+    observer.observe(c);
+  });
+
+  // Initial progress update
+  updateProgress();
+</script>
+
+</body>
+</html>
