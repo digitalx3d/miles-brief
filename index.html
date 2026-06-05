@@ -17,15 +17,13 @@
     --text-primary: #645d54;
     --text-secondary: #69655d;
     --accent-weather: #fee381;
-    --accent-weather-text: #9a8520;
     --accent-email: #3dfff2;
-    --accent-email-text: #1a8a80;
     --accent-calendar: #4476ab;
     --accent-note: #a05a6a;
     --border-subtle: rgba(0,0,0,0.08);
     --shadow-card: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
-    --font-display: 'Libre Baskerville', Georgia, serif;
-    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: Georgia, serif;
+    --font-body: system-ui, -apple-system, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,206 +33,65 @@
     background: var(--bg);
     color: var(--text-primary);
     min-height: 100vh;
-    min-height: 100dvh;
     padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .container {
-    max-width: 540px;
-    margin: 0 auto;
-  }
+  .container { max-width: 540px; margin: 0 auto; }
+  .header { text-align: center; padding: 36px 0 6px; }
+  .header h1 { font-family: var(--font-display); font-size: 2.2em; font-weight: 400; color: var(--text-primary); }
+  .header .date { font-size: 1.3em; color: var(--text-secondary); opacity: 0.7; margin-top: 8px; }
+  .header .divider { width: 48px; height: 2px; background: linear-gradient(90deg, var(--accent-weather), var(--accent-calendar)); margin: 18px auto 0; }
 
-  /* --- Header --- */
-  .header {
-    text-align: center;
-    padding: 36px 0 6px;
-    animation: fadeDown 0.6s ease-out both;
-  }
-  .header h1 {
-    font-family: var(--font-display);
-    font-size: 2.2em;
-    font-weight: 400;
-    color: var(--text-primary);
-    letter-spacing: 0.3px;
-    line-height: 1.15;
-  }
-  .header .date {
-    font-size: 1.3em;
-    color: var(--text-secondary);
-    opacity: 0.7;
-    margin-top: 8px;
-    font-weight: 400;
-  }
-  .header .divider {
-    width: 48px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-weather), var(--accent-calendar));
-    margin: 18px auto 0;
-    border-radius: 1px;
-    opacity: 0.7;
-  }
+  .greeting { text-align: center; font-size: 1.34em; color: var(--text-secondary); padding: 22px 8px 28px; font-style: italic; }
 
-  /* --- Greeting --- */
-  .greeting {
-    text-align: center;
-    font-size: 1.34em;
-    line-height: 1.3;
-    color: var(--text-secondary);
-    padding: 22px 8px 28px;
-    font-style: italic;
-    animation: fadeDown 0.6s ease-out 0.1s both;
-  }
+  .cards { display: flex; flex-direction: column; gap: 16px; }
 
-  /* --- Cards --- */
-  .cards {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .card {
-    background: var(--bg-card);
-    border-radius: 14px;
-    padding: 16px 18px;
-    box-shadow: var(--shadow-card);
-    position: relative;
-    overflow: hidden;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    border-radius: 14px 14px 0 0;
-  }
-  .card.weather  { animation: fadeUp 0.5s ease-out 0.15s both; }
-  .card.email    { animation: fadeUp 0.5s ease-out 0.25s both; }
-  .card.calendar { animation: fadeUp 0.5s ease-out 0.35s both; }
-  .card.note     { animation: fadeUp 0.5s ease-out 0.45s both; }
-
-  .card.weather::before  { background: linear-gradient(90deg, var(--accent-weather), transparent); }
-  .card.email::before    { background: linear-gradient(90deg, var(--accent-email), transparent); }
+  .card { background: var(--bg-card); border-radius: 14px; padding: 16px 18px; position: relative; overflow: hidden; }
+  .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+  
+  .card.weather::before { background: linear-gradient(90deg, var(--accent-weather), transparent); }
+  .card.email::before { background: linear-gradient(90deg, var(--accent-email), transparent); }
   .card.calendar::before { background: linear-gradient(90deg, var(--accent-calendar), transparent); }
-  .card.note::before     { background: linear-gradient(90deg, var(--accent-note), transparent); }
+  .card.note::before { background: linear-gradient(90deg, var(--accent-note), transparent); }
 
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .card-icon {
-    font-size: 1.2em;
-    width: 34px;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
-  .card.weather .card-icon  { background: rgba(254,227,129,0.3); }
-  .card.email .card-icon    { background: rgba(61,255,242,0.2); }
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .card-icon { font-size: 1.2em; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 8px; flex-shrink: 0; }
+  
+  .card.weather .card-icon { background: rgba(254,227,129,0.3); }
+  .card.email .card-icon { background: rgba(61,255,242,0.2); }
   .card.calendar .card-icon { background: rgba(68,118,171,0.2); }
-  .card.note .card-icon     { background: rgba(160,90,106,0.2); }
+  .card.note .card-icon { background: rgba(160,90,106,0.2); }
 
-  .card h2 {
-    font-family: var(--font-display);
-    font-size: 1.5em;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-  }
-  .card.weather h2  { color: var(--accent-weather); }
-  .card.email h2    { color: var(--accent-email); }
+  .card h2 { font-family: var(--font-display); font-size: 1.5em; font-weight: 400; }
+  .card.weather h2 { color: var(--accent-weather); }
+  .card.email h2 { color: var(--accent-email); }
   .card.calendar h2 { color: var(--accent-calendar); }
-  .card.note h2     { color: var(--accent-note); }
+  .card.note h2 { color: var(--accent-note); }
 
-  .card p, .card li {
-    font-size: 1.38em;
-    line-height: 1.3;
-    color: var(--text-secondary);
-  }
-  .card p strong, .card li strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-  .card ul {
-    list-style: none;
-    padding: 0;
-  }
-  .card ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border-subtle);
-  }
+  .card p, .card li { font-size: 1.38em; line-height: 1.3; color: var(--text-secondary); }
+  .card p strong, .card li strong { color: var(--text-primary); font-weight: 600; }
+  
+  .card ul { list-style: none; padding: 0; }
+  .card ul li { padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
   .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
-  .card ul li:first-child { padding-top: 0; }
 
-  /* --- Sign-off --- */
-  .signoff {
-    text-align: center;
-    font-size: 1.35em;
-    line-height: 1.3;
-    color: var(--text-secondary);
-    opacity: 0.7;
-    padding: 28px 12px 16px;
-    animation: fadeUp 0.5s ease-out 0.5s both;
-  }
-
-  /* --- Footer --- */
-  .footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 8px 0 32px;
-    animation: fadeUp 0.5s ease-out 0.55s both;
-  }
-  .footer img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .footer span {
-    font-size: 1em;
-    color: var(--text-secondary);
-    opacity: 0.4;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  /* --- Animations --- */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-delay: 0ms !important;
-    }
-  }
+  .signoff { text-align: center; font-size: 1.35em; color: var(--text-secondary); opacity: 0.7; padding: 28px 12px 16px; }
+  .footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 0 32px; }
+  .footer img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+  .footer span { font-size: 1em; color: var(--text-secondary); opacity: 0.4; text-transform: uppercase; font-weight: 600; }
 </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <h1>Morning Brief</h1>
-      <div class="date">Thursday, June 4, 2026</div>
+      <div class="date">Friday, June 5, 2026</div>
       <div class="divider"></div>
     </div>
 
-    <div class="greeting">Good morning, John.</div>
+    <div class="greeting">Good morning, John. Ready for a Friday with actual work that won't be interrupted by algorithms thinking about edge cases.</div>
 
     <div class="cards">
       <div class="card weather">
@@ -242,7 +99,7 @@
           <div class="card-icon">&#9728;</div>
           <h2>Weather</h2>
         </div>
-        <p><strong>High 108°F</strong>, sunny. Low around <strong>80°F</strong> tonight with clear skies.</p>
+        <p>Current conditions: <strong>89F</strong>, clear skies, winds from the WNW at 8 mph. High today reaches <strong>108F</strong>, low <strong>80F</strong>. Low humidity at 29% dew point. Dry and sunny all day.</p>
       </div>
 
       <div class="card email">
@@ -251,10 +108,11 @@
           <h2>Inbox</h2>
         </div>
         <ul>
-          <li><strong>Mercedes Priester</strong> (Taylor Morrison) - VASA Request</li>
-          <li><strong>Workato/Engrain</strong> - New Work Request: Background Image + Unit Map Tracing</li>
-          <li><strong>AM Pool Service</strong> - Invoice #10818</li>
-          <li><strong>School of Rock</strong> - Drum Lesson reminder for Andrew (6pm today)</li>
+          <li><strong>Engrain Work:</strong> 2 new unit map conversions (Style F, Style D) in Workfront</li>
+          <li><strong>Unit Map Tracing:</strong> New outsourced work request from Ian Galindo</li>
+          <li><strong>PayPal:</strong> Dropbox charge $13.08</li>
+          <li><strong>Pool Service Invoice:</strong> #10818 from AM Pool Service awaiting review</li>
+          <li><strong>App Store:</strong> Review feedback for your app</li>
         </ul>
       </div>
 
@@ -263,7 +121,7 @@
           <div class="card-icon">&#128197;</div>
           <h2>Calendar</h2>
         </div>
-        <p><strong>7:00 PM</strong> - John, Drum Lesson</p>
+        <p>Clear day. No scheduled events.</p>
       </div>
 
       <div class="card note">
@@ -271,11 +129,11 @@
           <div class="card-icon">&#127917;</div>
           <h2>Miles' Take</h2>
         </div>
-        <p>You've got a drum lesson tonight, which means two hours of peace and quiet while Andrew figures out what he's actually supposed to do with a drum kit. The real skill here is negotiating a teenage drummer's sudden discovery that double bass is a religion. God speed.</p>
+        <p>I've noticed that running a 3D rendering business where your inbox is full of unit map conversions is like being a drummer who practices the same fill 47 times in a row because you're slightly perfectionist about it. Repetitive? Sure. But it pays the bills and keeps the creative engine from completely rusting over.</p>
       </div>
     </div>
 
-    <div class="signoff">Stay sharp.</div>
+    <div class="signoff">Stay sharp. The work queue awaits.</div>
     <div class="footer">
       <img src="miles_profile.png" alt="">
       <span>Miles Monroe</span>
