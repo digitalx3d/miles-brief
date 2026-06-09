@@ -1,4 +1,4 @@
-<\!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -46,6 +46,7 @@
     margin: 0 auto;
   }
 
+  /* --- Header --- */
   .header {
     text-align: center;
     padding: 36px 0 6px;
@@ -75,6 +76,7 @@
     opacity: 0.7;
   }
 
+  /* --- Greeting --- */
   .greeting {
     text-align: center;
     font-size: 1.34em;
@@ -85,6 +87,7 @@
     animation: fadeDown 0.6s ease-out 0.1s both;
   }
 
+  /* --- Cards --- */
   .cards {
     display: flex;
     flex-direction: column;
@@ -170,6 +173,7 @@
   .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
   .card ul li:first-child { padding-top: 0; }
 
+  /* --- Sign-off --- */
   .signoff {
     text-align: center;
     font-size: 1.35em;
@@ -180,6 +184,7 @@
     animation: fadeUp 0.5s ease-out 0.5s both;
   }
 
+  /* --- Footer --- */
   .footer {
     display: flex;
     align-items: center;
@@ -203,6 +208,7 @@
     font-weight: 600;
   }
 
+  /* --- Animations --- */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -224,11 +230,11 @@
   <div class="container">
     <div class="header">
       <h1>Morning Brief</h1>
-      <div class="date">Monday, June 8, 2026</div>
+      <div class="date">Tuesday, June 9, 2026</div>
       <div class="divider"></div>
     </div>
 
-    <div class="greeting">Good morning, John. Happy birthday.</div>
+    <div class="greeting">Good morning, John. Another day in the grind.</div>
 
     <div class="cards">
       <div class="card weather">
@@ -236,7 +242,8 @@
           <div class="card-icon">&#9728;</div>
           <h2>Weather</h2>
         </div>
-        <p><strong>Sunny</strong> with a high of 105 degrees F, low of 78 degrees F. Red flag warnings remain active due to gusty winds and ongoing fire danger across Arizona.</p>
+        <p><strong>High:</strong> 100°F / <strong>Low:</strong> 86°F</p>
+        <p>Westerly winds 7.6 mph, clear skies.</p>
       </div>
 
       <div class="card email">
@@ -245,8 +252,10 @@
           <h2>Inbox</h2>
         </div>
         <ul>
-          <li><strong>Workfront (Ian Galindo)</strong> - Comment on Engrain Standard Background Image work for Preserve at Tampa Palms. 1:15 PM.</li>
-          <li><strong>Idaly Corella</strong> - Site Plan & Perspective Renderings project coordination for Tatum & Nisbet. (26-message thread; last activity 3 days ago.)</li>
+          <li><strong>Capital One:</strong> Transfer complete (6:04 AM)</li>
+          <li><strong>Google Business Profile:</strong> May 2026 performance report</li>
+          <li><strong>USAA Claims:</strong> Automobile claim update (2026-05-08)</li>
+          <li><strong>Wordfence Alert:</strong> Security issues on digitalx3d.com</li>
         </ul>
       </div>
 
@@ -255,19 +264,19 @@
           <div class="card-icon">&#128197;</div>
           <h2>Calendar</h2>
         </div>
-        <p>Clear all day.</p>
+        <p>Clear.</p>
       </div>
 
       <div class="card note">
         <div class="card-header">
           <div class="card-icon">&#127917;</div>
-          <h2>Miles Take</h2>
+          <h2>Miles' Take</h2>
         </div>
-        <p>Fifty-one years old and your calendar is completely clear. Either you have mastered the art of strategic absence, or someone forgot to book you. Either way, the Workfront notifications have already found you. The machine never forgets a birthday.</p>
+        <p>You just turned 51 yesterday, which comes with exciting new benefits like Wordfence alerts in your morning inbox. Truly the gift that keeps on giving.</p>
       </div>
     </div>
 
-    <div class="signoff">Make it count.</div>
+    <div class="signoff">Keep the systems running.</div>
     <div class="footer">
       <img src="miles_profile.png" alt="">
       <span>Miles Monroe</span>
