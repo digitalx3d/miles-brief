@@ -17,9 +17,7 @@
     --text-primary: #645d54;
     --text-secondary: #69655d;
     --accent-weather: #fee381;
-    --accent-weather-text: #9a8520;
     --accent-email: #3dfff2;
-    --accent-email-text: #1a8a80;
     --accent-calendar: #4476ab;
     --accent-note: #a05a6a;
     --border-subtle: rgba(0,0,0,0.08);
@@ -27,26 +25,16 @@
     --font-display: 'Libre Baskerville', Georgia, serif;
     --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: var(--font-body);
     background: var(--bg);
     color: var(--text-primary);
     min-height: 100vh;
-    min-height: 100dvh;
     padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
-
-  .container {
-    max-width: 540px;
-    margin: 0 auto;
-  }
-
-  /* --- Header --- */
+  .container { max-width: 540px; margin: 0 auto; }
   .header {
     text-align: center;
     padding: 36px 0 6px;
@@ -58,14 +46,12 @@
     font-weight: 400;
     color: var(--text-primary);
     letter-spacing: 0.3px;
-    line-height: 1.15;
   }
   .header .date {
     font-size: 1.3em;
     color: var(--text-secondary);
     opacity: 0.7;
     margin-top: 8px;
-    font-weight: 400;
   }
   .header .divider {
     width: 48px;
@@ -75,8 +61,6 @@
     border-radius: 1px;
     opacity: 0.7;
   }
-
-  /* --- Greeting --- */
   .greeting {
     text-align: center;
     font-size: 1.34em;
@@ -86,14 +70,7 @@
     font-style: italic;
     animation: fadeDown 0.6s ease-out 0.1s both;
   }
-
-  /* --- Cards --- */
-  .cards {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
+  .cards { display: flex; flex-direction: column; gap: 16px; }
   .card {
     background: var(--bg-card);
     border-radius: 14px;
@@ -105,9 +82,7 @@
   .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 5px;
     border-radius: 14px 14px 0 0;
   }
@@ -115,18 +90,11 @@
   .card.email    { animation: fadeUp 0.5s ease-out 0.25s both; }
   .card.calendar { animation: fadeUp 0.5s ease-out 0.35s both; }
   .card.note     { animation: fadeUp 0.5s ease-out 0.45s both; }
-
   .card.weather::before  { background: linear-gradient(90deg, var(--accent-weather), transparent); }
   .card.email::before    { background: linear-gradient(90deg, var(--accent-email), transparent); }
   .card.calendar::before { background: linear-gradient(90deg, var(--accent-calendar), transparent); }
   .card.note::before     { background: linear-gradient(90deg, var(--accent-note), transparent); }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .card-icon {
     font-size: 1.2em;
     width: 34px;
@@ -141,7 +109,6 @@
   .card.email .card-icon    { background: rgba(61,255,242,0.2); }
   .card.calendar .card-icon { background: rgba(68,118,171,0.2); }
   .card.note .card-icon     { background: rgba(160,90,106,0.2); }
-
   .card h2 {
     font-family: var(--font-display);
     font-size: 1.5em;
@@ -152,7 +119,6 @@
   .card.email h2    { color: var(--accent-email); }
   .card.calendar h2 { color: var(--accent-calendar); }
   .card.note h2     { color: var(--accent-note); }
-
   .card p, .card li {
     font-size: 1.38em;
     line-height: 1.3;
@@ -162,29 +128,20 @@
     color: var(--text-primary);
     font-weight: 600;
   }
-  .card ul {
-    list-style: none;
-    padding: 0;
-  }
+  .card ul { list-style: none; padding: 0; }
   .card ul li {
     padding: 8px 0;
     border-bottom: 1px solid var(--border-subtle);
   }
-  .card ul li:last-child { border-bottom: none; padding-bottom: 0; }
-  .card ul li:first-child { padding-top: 0; }
-
-  /* --- Sign-off --- */
+  .card ul li:last-child { border-bottom: none; }
   .signoff {
     text-align: center;
     font-size: 1.35em;
-    line-height: 1.3;
     color: var(--text-secondary);
     opacity: 0.7;
     padding: 28px 12px 16px;
     animation: fadeUp 0.5s ease-out 0.5s both;
   }
-
-  /* --- Footer --- */
   .footer {
     display: flex;
     align-items: center;
@@ -193,22 +150,8 @@
     padding: 8px 0 32px;
     animation: fadeUp 0.5s ease-out 0.55s both;
   }
-  .footer img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .footer span {
-    font-size: 1em;
-    color: var(--text-secondary);
-    opacity: 0.4;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  /* --- Animations --- */
+  .footer img { width: 40px; height: 40px; border-radius: 50%; }
+  .footer span { font-size: 1em; color: var(--text-secondary); opacity: 0.4; }
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -217,24 +160,17 @@
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-delay: 0ms !important;
-    }
-  }
 </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <h1>Morning Brief</h1>
-      <div class="date">Thursday, July 2, 2026</div>
+      <div class="date">Friday, July 3, 2026</div>
       <div class="divider"></div>
     </div>
 
-    <div class="greeting">Good morning, John. Got a few things on the radar.</div>
+    <div class="greeting">Good morning, John.</div>
 
     <div class="cards">
       <div class="card weather">
@@ -242,7 +178,8 @@
           <div class="card-icon">&#9728;</div>
           <h2>Weather</h2>
         </div>
-        <p>Sunny today. High of <strong>102°F</strong>, low of <strong>77°F</strong>. Wind light from the west. Pretty standard July.</p>
+        <p><strong>104°F high, 78°F low</strong></p>
+        <p>Partly cloudy. Currently 94°F with south-southeast winds. Air quality is poor today.</p>
       </div>
 
       <div class="card email">
@@ -251,8 +188,11 @@
           <h2>Inbox</h2>
         </div>
         <ul>
-          <li><strong>App Store Connect:</strong> There's an issue with your Carpool-Q (iOS) submission. Check App Store Connect for details.</li>
-          <li><strong>Wells Fargo Advisors:</strong> Your statement is ready.</li>
+          <li><strong>Wordfence Alert:</strong> Problems found on digitalx3d.com. Check when you get a chance.</li>
+          <li><strong>QuickBooks Payroll:</strong> Direct deposit receipt processed for Digital-X.</li>
+          <li><strong>QuickBooks Payments:</strong> Money on the way (incoming payment).</li>
+          <li><strong>Chase Statement:</strong> Latest statement available for review.</li>
+          <li><strong>Wells Fargo Statement:</strong> Account statement ready.</li>
         </ul>
       </div>
 
@@ -261,10 +201,7 @@
           <div class="card-icon">&#128197;</div>
           <h2>Calendar</h2>
         </div>
-        <ul>
-          <li><strong>10:00 AM:</strong> Renew SSL Cert for Digitalx3d.com</li>
-          <li><strong>7:00 PM:</strong> Drum Lesson</li>
-        </ul>
+        <p>Clear today. Tomorrow is the Fourth, so you've got a full holiday weekend ahead.</p>
       </div>
 
       <div class="card note">
@@ -272,11 +209,11 @@
           <div class="card-icon">&#127917;</div>
           <h2>Miles' Take</h2>
         </div>
-        <p>Your app submission got rejected, your SSL certificate's three days from expiry, and you've got a drum lesson later. At least one of those things will sound good when you're done with it.</p>
+        <p>I've been thinking about the strange paradox of holiday weekends: everyone is supposed to be relaxing, yet somehow Wordfence thinks Friday before Independence Day is a great time to report security issues. It's like your inbox doesn't believe in federal holidays. I'd check that alert, but maybe wait until after a coffee or two.</p>
       </div>
     </div>
 
-    <div class="signoff">Stay on top of it.</div>
+    <div class="signoff">Have a good one.</div>
     <div class="footer">
       <img src="miles_profile.png" alt="">
       <span>Miles Monroe</span>
